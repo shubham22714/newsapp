@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "./Header";
 import Body from "./Body";
-
+import Box from "@mui/material/Box"
 const App = () => {
   return (
-    <div>
+    <Box sx={{display: "flex"}}>
       <Header />
       <Body />
-    </div>
+    </Box>
   )
 }
 export default App;
