@@ -1,16 +1,13 @@
-import React,{useContext} from 'react';
+import React from "react";
+import Header from "./Header";
+import Body from "./Body";
 
-import {ACTIONS,NewsContext} from "./Api/NewsContext";
-
-const News = (props) => {
-  const {state, dispatch} = useContext(NewsContext);
+const App = () => {
   return (
     <div>
-      testing..
-      {console.log(state)} 
-      
+      <Header />
+      <Body />
     </div>
-  ) 
+  )
 }
-
-export default News;
+export default App;

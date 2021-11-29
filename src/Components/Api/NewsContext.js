@@ -52,13 +52,13 @@ export const NewsContext= createContext();
 export const NewsContextProvider = (({children}) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   
-  useEffect(() => {
-    axios
-      .get(`${BASE_LINK}${API_KEY}`)
-      .then((response) => { dispatch({type: ACTIONS.GET_DATA, payload:{data: response.data}})
-      })
-       .catch((error) => console.log(error));
-  },[])
+  // useEffect(() => {
+  //   axios
+  //     .get(`${BASE_LINK}${API_KEY}`)
+  //     .then((response) => { dispatch({type: ACTIONS.GET_DATA, payload:{data: response.data}})
+  //     })
+  //      .catch((error) => console.log(error));
+  // },[])
   
   return (
     <NewsContext.Provider value={{state, dispatch}}>
