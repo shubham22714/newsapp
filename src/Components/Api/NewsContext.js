@@ -1,16 +1,5 @@
-import React, {createContext, useEffect, useReducer} from "react";
-import axios from "axios";
+import React, {createContext,  useReducer} from "react";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-const date = () => {
-    const today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth()).padStart(2, '0');
-    const yyyy = today.getFullYear();
-    return `${yyyy}-${mm}-${dd}`
-}
-const QUERY = "tesla";
-const BASE_LINK = `https://newsapi.org/v2/everything?q=${QUERY}&from=${date}&sorBy=published&apiKey=`
 
 const initialState = {
   loading: true,
@@ -35,13 +24,12 @@ const reducer = (state, {type,payload}) => {
         data: payload.data
       }
 
-
-    case ACTIONS.QUERY_SEARCH:
+    case ACTIONS.SET_DATA:
       return {
         loading: false,
         error: "No Error",
-        data: {"testing": "done"} 
-    }
+        data: payload.data
+      }
     default:
       return state
   }
@@ -52,17 +40,6 @@ export const NewsContext= createContext();
 export const NewsContextProvider = (({children}) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   
-  useEffect(() => {
-    const test = async () => {
-      await axios
-        .get(`${BASE_LINK}${API_KEY}`)
-        .then((response) =>{
-           dispatch({type: ACTIONS.GET_DATA, payload:{data: response.data}})
-        })
-        .catch((error) => console.log(error));
-    }
-    test()
-  },[])
   
   return (
     <NewsContext.Provider value={{state, dispatch}}>

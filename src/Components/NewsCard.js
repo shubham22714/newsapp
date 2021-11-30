@@ -10,7 +10,7 @@ const NewsCard = ({newsImage, newsTitle, newsDescription, url}) => {
 
   return (
       <Card sx={{maxWidth: "30vw", marginLeft: "1rem", borderRadius: 2, border: 1,marginBottom: 2}}>
-          <CardActionArea href={url}>
+          <CardActionArea target="_blank" rel="noreferrer nooponer"  href={url}>
              <CardMedia
                component="img"
               height="250rem"

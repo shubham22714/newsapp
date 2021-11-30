@@ -8,7 +8,6 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 
 import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
@@ -67,11 +66,26 @@ const StyledInputBase  = styled(InputBase) (({theme}) =>({
 }))
 
 
-const Header = () => {
-  // const {state, dispatch} = useContext(NewsContext);
-  //
-  
+const Header = ({Query,setQuery}) => {
+
   const [isOpen, setIsOpen] = useState(false);
+  const [tempTerm, setTempTerm] = useState("Search..")
+
+  const updateSetQuery = (e) => {
+    setQuery(tempTerm)
+    setTempTerm("")
+  }
+  const updateSetQueryKey = (e) => {
+    if (e.key === "Enter") {
+      console.log("called")
+      setQuery(tempTerm)
+      setTempTerm("")
+    }
+  }
+
+  const handleChange = (e) => {
+    setTempTerm(e.target.value)
+  }
 
   const list = () => (
     <Box 
@@ -121,16 +135,19 @@ const Header = () => {
                   NewsApp
                 </Typography>
                    {/* insert a search UI */} 
-                <Search>
+                <Search value={Query}>
                   <SearchIconWrapper>
                     <SearchIcon />
                     </SearchIconWrapper>
                   <StyledInputBase
-                    placeholder="Search.."
+                    placeholder={tempTerm}
+                onChange={(e) => {
+                  handleChange(e)
+                }}
+                    onKeyDown={updateSetQueryKey}
                     inputProps={{"aria-label": "search"}} />
                 </Search>
                    {/* end of search ui */}
-                <Button color="inherit"> Search </Button>
             </Toolbar>
         </AppBar>
       </Box>
