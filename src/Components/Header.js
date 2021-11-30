@@ -24,7 +24,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
-// import d{ACTIONS,NewsContext} from "./Api/NewsContext";
 
 
 const Search = styled('div')(({theme}) =>({
@@ -69,17 +68,11 @@ const StyledInputBase  = styled(InputBase) (({theme}) =>({
 const Header = ({Query,setQuery}) => {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [tempTerm, setTempTerm] = useState("Search..")
+  const [tempTerm, setTempTerm] = useState("")
 
-  const updateSetQuery = (e) => {
-    setQuery(tempTerm)
-    setTempTerm("")
-  }
   const updateSetQueryKey = (e) => {
     if (e.key === "Enter") {
-      console.log("called")
       setQuery(tempTerm)
-      setTempTerm("")
     }
   }
 
@@ -140,7 +133,8 @@ const Header = ({Query,setQuery}) => {
                     <SearchIcon />
                     </SearchIconWrapper>
                   <StyledInputBase
-                    placeholder={tempTerm}
+                    placeholder="Search.."
+                    value={tempTerm}
                 onChange={(e) => {
                   handleChange(e)
                 }}

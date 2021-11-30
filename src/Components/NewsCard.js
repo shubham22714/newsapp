@@ -9,7 +9,7 @@ const NewsCard = ({newsImage, newsTitle, newsDescription, url}) => {
   const navigate = useNavigate()
 
   return (
-      <Card sx={{maxWidth: "30vw", marginLeft: "1rem", borderRadius: 2, border: 1,marginBottom: 2}}>
+    <Card sx={{minWidth: "25rem",maxWidth: "30%", marginLeft: "1rem", borderRadius: 2, border: 1,marginBottom: 2}}>
           <CardActionArea target="_blank" rel="noreferrer nooponer"  href={url}>
              <CardMedia
                component="img"

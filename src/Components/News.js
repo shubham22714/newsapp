@@ -21,14 +21,6 @@ const News = () => {
       return `${yyyy}-${mm}-${dd}`
   }
   const BASE_LINK_ORIGINAL = `https://newsapi.org/v2/everything?q=${Query}&from=${date}&pageSize=21&page=${Page}&sorBy=published&apiKey=`
-  // const BASE_LINK = () => {
-  //   if (Query === "") {
-  //    return `https://newsapi.org/v2/top-headlines?country=in&apiKey=${API_KEY}`
-  //   }
-  //   else {
-  //     return BASE_LINK_ORIGINAL
-  //   }
-  // }
   const BASE_LINK =`https://newsapi.org/v2/top-headlines?pageSize=21&page=${Page}&country=in&apiKey=`
 
   const API_KEY = process.env.REACT_APP_API_KEY
